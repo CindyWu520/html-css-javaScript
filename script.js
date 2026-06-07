@@ -62,6 +62,7 @@ class User {
     //     console.log(`hello, I am ${this.name}, and I am ${this.age} old.`)
     // }
     sayHi = function () {
+        // template Literals（模板字符串）
         console.log(`hello, I am ${this.name}, and I am ${this.age} old.`)
     }
 }
@@ -77,5 +78,51 @@ class VipUser extends User {
 let vipUser1 = new VipUser("christy", 20);
 vipUser1.sayHi();
 
-// template Literals（模板字符串）
-// spread operators (扩展运算符)
+// spread operators (扩展运算符) if array use [], object use {}
+const object = {a: 1, b: 2};
+const newObject = {...object, c: 3, d: 4};
+console.log(newObject);
+
+// destructure (解构) !important
+const {a} = object;
+console.log(a);
+
+// array method
+const arr = [1, 2, 3, 4];
+const newArr = arr.map(item => item + 2);
+const result = arr.filter(item => item > 2);
+const hasBig = arr.some(item => item > 4);
+const allEven = arr.every(item => item % 2 === 0);
+const sum = arr.reduce((acc, cur) => acc + cur, 0);
+console.log(newArr, result, sum, hasBig, allEven);
+
+
+// asynchronous: 异步
+// 网络请求(AJAX/Fetch)，定时器(setTimeout)，文件读取，数据库操作
+
+// promise: 对未来结果的承诺
+// 用来处理异步任务
+// 有三种状态：pending, fullfilled: then(), rejected: catch()
+function fetchData() {
+    return fetch("https://api.example/com/data")
+    .then(response => response.json)
+    .then(data => {
+        console.log(data);
+    })
+    .catch(error => {
+        console.log("Unexpected error: ", error);
+    })
+}
+
+// async/await: 基于promise(会返回一个promise)，使异步看起来像同步。
+// keyword: await
+async function callApi(params) {
+    try {
+        let response = await fetch("https://api.example/com/data");
+        let data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.log("Unexpected error: ", error);
+    }
+}
+
