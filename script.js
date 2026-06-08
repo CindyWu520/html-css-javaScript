@@ -104,13 +104,13 @@ console.log(newArr, result, sum, hasBig, allEven);
 // 用来处理异步任务
 // 有三种状态：pending, fullfilled: then(), rejected: catch()
 function fetchData() {
-    return fetch("https://api.example/com/data")
-    .then(response => response.json)
+    return fetch("https://api.example.com/data")
+    .then(response => response.json())
     .then(data => {
         console.log(data);
     })
     .catch(error => {
-        console.log("Unexpected error: ", error);
+        console.error("Unexpected error: ", error);
     })
 }
 
@@ -118,11 +118,11 @@ function fetchData() {
 // keyword: await
 async function callApi(params) {
     try {
-        let response = await fetch("https://api.example/com/data");
+        let response = await fetch("https://api.example.com/data");
         let data = await response.json();
         console.log(data);
     } catch (error) {
-        console.log("Unexpected error: ", error);
+        console.error("Unexpected error: ", error);
     }
 }
 
